@@ -17,7 +17,7 @@ class Admin extends MainController {
 
     }
     
-    function adm_login() {
-         $this->model->adm_login();
+    function login() {
+         $this->model->login();
     }
 }

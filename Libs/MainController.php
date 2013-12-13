@@ -24,21 +24,19 @@ class MainController {
             header('location:'.URL.'login');
             exit;
         }
-
-                
-            }
         
-        protected function checkAuth_adm() {
-        Session::init();
-        $logadm = Session::get('admin');
-        if($logadm == false) {
-            Session::destroy();
-            header('location:'.URL.'admin');
-            exit;
-        }
+    }
 
-                
-            }
+    protected function checkAuth_adm() {
+    Session::init();
+    $logged_adm = Session::get('adm_loggedIn');
+    if($logged_adm == false) {
+    Session::destroy();
+    header('location:'.URL.'admin');
+    exit;
+        }  
+        
+   }
     
     
     

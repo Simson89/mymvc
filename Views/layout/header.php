@@ -2,7 +2,7 @@
 <html lang="pl">
   <head>
     <meta charset="utf-8">
-    <title>Bootstrap, from Twitter</title>
+    <title>System biblioteczny v0.5</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -66,8 +66,8 @@
                            // echo '<li><a href='.URL.'dashboard/logout>Logout</a></li>';
                            echo "<p class='navbar-text pull-right'>Logged in as <a href='#' class='navbar-link'>".Session::get('user')."</a> <a href='".URL."dashboard/logout'>(logout)</a></p>";
                         }
-                        elseif (Session::get('adm_logged') == true) {
-                             echo "<p class='navbar-text pull-right'>Logged in as <a href='#' class='navbar-link'>".Session::get('admin')."</a> <a href='".URL."control/logout'>(logout)</a></p>";
+                        elseif (Session::get('adm_loggedIn') == true) {
+                            echo "<p class='navbar-text pull-right'>Logged in as <a href='#' class='navbar-link'>".Session::get('admin')."</a> <a href='".URL."control/logout'>(logout)</a></p>";
                         }
                         else {
                         echo "<form class='navbar-form pull-right' action=".URL."login/run method='post'>";
@@ -77,6 +77,7 @@
                         echo '</form>';
                          
                         }
+                        
                     ?>
        
           </div><!--/.nav-collapse -->

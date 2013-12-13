@@ -6,7 +6,7 @@ class AdminModel extends MainModel {
        
     }
     
-    public function adm_login() {
+    public function login() {
         $login = $_POST['login'];
         $password = $_POST['password'];
         $sth = $this->db->prepare ("SELECT * from admin where login= :login and password= MD5(:password)");
@@ -21,7 +21,7 @@ class AdminModel extends MainModel {
         if($count > 0) {
             
             Session::init();
-            Session::set('admin', true);
+            Session::set('adm_loggedIn', true);
             Session::set('admin', $data[0]['login']);
             Session::set('admin_id', $data[0]['id']);
             header('location:'.URL.'control');
