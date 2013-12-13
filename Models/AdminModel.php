@@ -1,16 +1,15 @@
 <?php
-class LoginModel extends MainModel {
+class AdminModel extends MainModel {
 
     function __construct() {
         parent::__construct();
        
     }
     
-    
-    public function run() {
+    public function adm_login() {
         $login = $_POST['login'];
         $password = $_POST['password'];
-        $sth = $this->db->prepare ("SELECT * from users where login= :login and password= MD5(:password)");
+        $sth = $this->db->prepare ("SELECT * from admin where login= :login and password= MD5(:password)");
         $sth->execute(array(
             ':login' => $login,
             ':password' => $password
@@ -22,14 +21,14 @@ class LoginModel extends MainModel {
         if($count > 0) {
             
             Session::init();
-            Session::set('loggedIn', true);
-            Session::set('user', $data[0]['login']);
-            Session::set('user_id', $data[0]['user_id']);
-            header('location:'.URL.'dashboard');
+            Session::set('admin', true);
+            Session::set('admin', $data[0]['login']);
+            Session::set('admin_id', $data[0]['id']);
+            header('location:'.URL.'control');
             
         }
         else {
-            header('location:'.URL.'login');
+            header('location:'.URL.'admin');
         }
         
     }
